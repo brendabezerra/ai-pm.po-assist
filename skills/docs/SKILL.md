@@ -14,6 +14,10 @@ Generate and maintain project documentation — PRDs, design docs, user stories,
 - Create documents from meeting notes and action items
 - Save documents locally as markdown files
 - Use templates from `templates/` as starting structures
+- Analyze requirements against project scope and existing business rules (conflict detection, risk assessment)
+- Generate Functional Specifications (SPEC) from approved PRDs
+- Break SPECs into sized, prioritized issues
+- Generate development plans per issue (with backend story and QA story stubs)
 
 ### Cannot Do
 - Publish to Confluence (deferred to Phase 6)
@@ -53,3 +57,7 @@ Generate and maintain project documentation — PRDs, design docs, user stories,
 - `prompts/design_doc.md` — Generate design documents
 - `prompts/prd.md` — Generate PRDs
 - `prompts/story_writer.md` — Write QA and Backend stories
+- `prompts/requirements_analysis.md` — Analyze requirements vs. scope, conflicts, risks
+- `prompts/spec.md` — Generate Functional Specification from PRD
+- `prompts/issue_writer.md` — Break SPEC into issues
+- `prompts/dev_plan.md` — Generate development plan per issue
