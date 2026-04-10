@@ -46,6 +46,11 @@ This agent has 6 skill modules. Each has its own SKILL.md with mission, scope, r
 | `/triage` | `.claude/commands/triage.md` | Channel triage: scan and categorize unread items |
 | `/followup` | `.claude/commands/followup.md` | Post-meeting: extract actions + generate deliverables |
 | `/prd` | `.claude/commands/prd.md` | Generate PRD from project context |
+| `/analyze` | `.claude/commands/analyze.md` | Analyze requirements vs. scope, conflicts, and risks |
+| `/spec` | `.claude/commands/spec.md` | Generate functional specification from approved PRD |
+| `/issues` | `.claude/commands/issues.md` | Break SPEC into sized, prioritized issues |
+| `/devplan` | `.claude/commands/devplan.md` | Generate development plan + story stubs per issue |
+| `/qa` | `.claude/commands/qa.md` | Run QA test cycle, log bugs, generate release checklist |
 
 ## Multi-Project Support
 
@@ -75,6 +80,12 @@ Templates in `templates/` provide starting structures for deliverables:
 - `meeting_notes.md` — Meeting Notes
 - `qa_story.md` — QA Test Story
 - `backend_story.md` — Backend Story
+- `requirements.md` — Raw requirements capture from stakeholder sessions
+- `spec.md` — Functional Specification (bridge between PRD and development)
+- `issue.md` — Individual issue/ticket derived from SPEC
+- `dev_plan.md` — Development plan per issue
+- `bug_report.md` — Bug report from QA testing
+- `release_checklist.md` — Definition-of-done checklist before pushing to dev branch
 
 ## Guardrails
 
