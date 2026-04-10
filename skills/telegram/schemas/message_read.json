@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Telegram Message Read",
+  "description": "Schema for reading and filtering Telegram messages.",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string",
+          "enum": ["unread", "recent", "by_chat", "by_group", "by_channel"],
+          "default": "unread"
+        },
+        "chat_name": { "type": "string" },
+        "max_messages": { "type": "integer", "default": 20 },
+        "since": { "type": "string", "format": "date-time" }
+      }
+    },
+    "output": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "chat_name": { "type": "string" },
+          "chat_type": { "type": "string", "enum": ["private", "group", "channel"] },
+          "sender": { "type": "string" },
+          "message": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "project": { "type": "string" },
+          "has_action_item": { "type": "boolean" },
+          "has_code": { "type": "boolean" },
+          "summary": { "type": "string" }
+        }
+      }
+    }
+  }
+}

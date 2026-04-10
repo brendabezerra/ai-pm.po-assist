@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Telegram Message Send",
+  "description": "Schema for sending Telegram messages. Always requires user confirmation.",
+  "type": "object",
+  "required": ["to", "message"],
+  "properties": {
+    "to": {
+      "type": "string",
+      "description": "Chat name, group name, channel name, or username"
+    },
+    "message": {
+      "type": "string",
+      "description": "Message content (supports Markdown)"
+    },
+    "reply_to": {
+      "type": "string",
+      "description": "Message ID to reply to"
+    },
+    "parse_mode": {
+      "type": "string",
+      "enum": ["Markdown", "HTML"],
+      "default": "Markdown"
+    },
+    "project": { "type": "string" },
+    "requires_confirmation": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

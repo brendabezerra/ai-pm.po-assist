@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Document Create",
+  "description": "Schema for document creation requests.",
+  "type": "object",
+  "required": ["type", "project", "title"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["prd", "design_doc", "meeting_notes", "qa_story", "backend_story"]
+    },
+    "project": { "type": "string" },
+    "title": { "type": "string" },
+    "context": {
+      "type": "string",
+      "description": "Background context, requirements, or raw input to generate from"
+    },
+    "template": {
+      "type": "string",
+      "description": "Path to template file (defaults to matching type in templates/)"
+    },
+    "output_path": {
+      "type": "string",
+      "description": "Where to save the generated document"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "author": { "type": "string" },
+        "sprint": { "type": "string" },
+        "related_meeting": { "type": "string" },
+        "related_prd": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Event Manage",
+  "description": "Schema for creating, editing, and canceling calendar events.",
+  "type": "object",
+  "required": ["action"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["create", "update", "cancel"]
+    },
+    "event_id": {
+      "type": "string",
+      "description": "Required for update/cancel"
+    },
+    "title": { "type": "string" },
+    "start": { "type": "string", "format": "date-time" },
+    "end": { "type": "string", "format": "date-time" },
+    "attendees": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "location": { "type": "string" },
+    "description": { "type": "string" },
+    "video_link": { "type": "string" },
+    "project": { "type": "string" },
+    "recurrence": { "type": "string" },
+    "reminders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "method": { "type": "string", "enum": ["email", "popup"] },
+          "minutes": { "type": "integer" }
+        }
+      }
+    }
+  }
+}

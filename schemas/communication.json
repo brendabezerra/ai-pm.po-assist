@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Communication",
+  "description": "Universal message contract used when one skill triggers communication through another skill.",
+  "type": "object",
+  "required": ["from_skill", "to_skill", "action", "content"],
+  "properties": {
+    "from_skill": {
+      "type": "string",
+      "enum": ["email", "calendar", "telegram", "whatsapp", "meetings", "docs"],
+      "description": "The skill that originated this communication"
+    },
+    "to_skill": {
+      "type": "string",
+      "enum": ["email", "calendar", "telegram", "whatsapp", "meetings", "docs"],
+      "description": "The skill that should execute this communication"
+    },
+    "action": {
+      "type": "string",
+      "enum": ["send", "draft", "schedule", "create", "update", "notify"],
+      "description": "What action to perform"
+    },
+    "project": {
+      "type": "string",
+      "description": "Project identifier this communication belongs to"
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["P1", "P2", "P3"],
+      "description": "Priority level. P1 = urgent/blocking, P2 = important/this week, P3 = low/backlog"
+    },
+    "content": {
+      "type": "object",
+      "properties": {
+        "subject": {
+          "type": "string",
+          "description": "Subject line or title"
+        },
+        "body": {
+          "type": "string",
+          "description": "Message body or content"
+        },
+        "recipients": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of recipients (email addresses, phone numbers, or usernames)"
+        },
+        "attachments": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "File paths or URLs to attach"
+        }
+      },
+      "required": ["body"]
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "description": "ID of the source message/event that triggered this"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "requires_confirmation": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether user must approve before sending"
+        }
+      }
+    }
+  }
+}

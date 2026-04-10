@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task",
+  "description": "Universal task schema used by meetings, email, and docs skills to create and track action items.",
+  "type": "object",
+  "required": ["title", "project", "source"],
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Clear, actionable task title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of what needs to be done"
+    },
+    "project": {
+      "type": "string",
+      "description": "Project identifier"
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "skill": {
+          "type": "string",
+          "enum": ["email", "calendar", "telegram", "whatsapp", "meetings", "docs"]
+        },
+        "reference": {
+          "type": "string",
+          "description": "Reference to the source (email subject, meeting name, message ID)"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "required": ["skill", "reference"]
+    },
+    "owner": {
+      "type": "string",
+      "description": "Person responsible for this task"
+    },
+    "deadline": {
+      "type": "string",
+      "format": "date",
+      "description": "Due date"
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["P1", "P2", "P3"]
+    },
+    "type": {
+      "type": "string",
+      "enum": ["action_item", "decision", "follow_up", "blocker", "bug", "feature", "story"],
+      "description": "Type of task"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["open", "in_progress", "done", "blocked"],
+      "default": "open"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Labels for categorization"
+    }
+  }
+}

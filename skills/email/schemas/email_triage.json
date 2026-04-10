@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Email Triage",
+  "description": "Input/output schema for email triage operations.",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string",
+          "enum": ["unread", "today", "this_week", "by_label", "by_sender"],
+          "default": "unread"
+        },
+        "label": { "type": "string" },
+        "sender": { "type": "string" },
+        "max_results": { "type": "integer", "default": 20 }
+      }
+    },
+    "output": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "from": { "type": "string" },
+          "subject": { "type": "string" },
+          "snippet": { "type": "string" },
+          "date": { "type": "string", "format": "date-time" },
+          "project": { "type": "string" },
+          "priority": { "type": "string", "enum": ["P1", "P2", "P3"] },
+          "category": {
+            "type": "string",
+            "enum": ["action_required", "fyi", "meeting_invite", "follow_up", "newsletter", "other"]
+          },
+          "suggested_action": { "type": "string" }
+        }
+      }
+    }
+  }
+}
