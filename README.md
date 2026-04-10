@@ -1,5 +1,5 @@
-# AI PM — Personal PM Operating System
-
+#🌹AI PM — Personal PM Operating System
+Made by: Brenda Bezerra (Dex)
 > *Not a chatbot. An operating system for product management.*
 
 ---
