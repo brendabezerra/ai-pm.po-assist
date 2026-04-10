@@ -1,0 +1,58 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# OAuth tokens and sessions
+*.token
+*.session
+auth/
+tokens/
+
+# WhatsApp Baileys session data
+baileys_auth_info/
+baileys_store/
+
+# Telegram session
+*.session
+telegram_session/
+
+# Google OAuth credentials
+credentials.json
+token.json
+client_secret*.json
+
+# Google Workspace CLI credentials
+gws_config/
+gws_auth/
+~/.gws/
+.gws/
+
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Claude settings with secrets (MCP credentials)
+.claude/settings.local.json
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (if MCP servers are installed locally)
+node_modules/
+package-lock.json
+
+# Python (if MCP servers use Python)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Logs
+*.log
+logs/

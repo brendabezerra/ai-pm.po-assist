@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Meeting Notes Input",
+  "description": "Structured input format for meeting notes processing.",
+  "type": "object",
+  "required": ["title", "date", "notes"],
+  "properties": {
+    "title": { "type": "string" },
+    "date": { "type": "string", "format": "date" },
+    "project": { "type": "string" },
+    "attendees": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "agenda": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Raw meeting notes — can be unstructured text, bullet points, or transcript"
+    },
+    "recording_url": { "type": "string" },
+    "calendar_event_id": { "type": "string" }
+  }
+}

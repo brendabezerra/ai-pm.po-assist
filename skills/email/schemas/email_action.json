@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Email Action",
+  "description": "Schema for email send/reply/forward actions.",
+  "type": "object",
+  "required": ["action", "to", "body"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["reply", "reply_all", "forward", "new"]
+    },
+    "to": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "cc": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "subject": { "type": "string" },
+    "body": { "type": "string" },
+    "thread_id": {
+      "type": "string",
+      "description": "Thread ID for reply/forward actions"
+    },
+    "project": { "type": "string" }
+  }
+}

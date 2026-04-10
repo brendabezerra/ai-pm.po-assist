@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project Context",
+  "description": "Schema for project context files in projects/<name>/context.md. Defines the structure the agent expects.",
+  "type": "object",
+  "required": ["name", "status"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Project name"
+    },
+    "slug": {
+      "type": "string",
+      "description": "Short identifier used in commands and file names"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "paused", "completed", "archived"],
+      "description": "Current project status"
+    },
+    "description": {
+      "type": "string",
+      "description": "One-paragraph project description"
+    },
+    "goals": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Current project goals or OKRs"
+    },
+    "team": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "role": { "type": "string" },
+          "contact": { "type": "string", "description": "Email, phone, or username" }
+        },
+        "required": ["name", "role"]
+      }
+    },
+    "stakeholders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "role": { "type": "string" },
+          "interest": { "type": "string", "description": "What they care about" }
+        },
+        "required": ["name", "role"]
+      }
+    },
+    "current_sprint": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "start_date": { "type": "string", "format": "date" },
+        "end_date": { "type": "string", "format": "date" },
+        "goals": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "channels": {
+      "type": "object",
+      "description": "Communication channels for this project",
+      "properties": {
+        "email_labels": { "type": "array", "items": { "type": "string" } },
+        "whatsapp_groups": { "type": "array", "items": { "type": "string" } },
+        "telegram_groups": { "type": "array", "items": { "type": "string" } },
+        "confluence_space": { "type": "string" },
+        "jira_project": { "type": "string" }
+      }
+    },
+    "key_documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "url": { "type": "string" },
+          "type": { "type": "string" }
+        }
+      },
+      "description": "Links to important project documents"
+    }
+  }
+}

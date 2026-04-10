@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Event Read",
+  "description": "Schema for reading and filtering calendar events.",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "range": {
+          "type": "string",
+          "enum": ["today", "tomorrow", "this_week", "next_week", "custom"],
+          "default": "today"
+        },
+        "start_date": { "type": "string", "format": "date" },
+        "end_date": { "type": "string", "format": "date" },
+        "project": { "type": "string" }
+      }
+    },
+    "output": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "start": { "type": "string", "format": "date-time" },
+          "end": { "type": "string", "format": "date-time" },
+          "attendees": { "type": "array", "items": { "type": "string" } },
+          "location": { "type": "string" },
+          "video_link": { "type": "string" },
+          "project": { "type": "string" },
+          "needs_prep": { "type": "boolean" },
+          "conflict": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

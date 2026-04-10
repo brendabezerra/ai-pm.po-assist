@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Action Items Output",
+  "description": "Output format for action items extracted from meetings.",
+  "type": "object",
+  "required": ["meeting_title", "items"],
+  "properties": {
+    "meeting_title": { "type": "string" },
+    "meeting_date": { "type": "string", "format": "date" },
+    "project": { "type": "string" },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "decision": { "type": "string" },
+          "rationale": { "type": "string" },
+          "decided_by": { "type": "string" }
+        },
+        "required": ["decision"]
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "action": { "type": "string" },
+          "owner": { "type": "string" },
+          "deadline": { "type": "string", "format": "date" },
+          "priority": { "type": "string", "enum": ["P1", "P2", "P3"] },
+          "status": { "type": "string", "enum": ["open", "in_progress", "done"], "default": "open" }
+        },
+        "required": ["action", "owner"]
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "blocker": { "type": "string" },
+          "impact": { "type": "string" },
+          "owner": { "type": "string" }
+        },
+        "required": ["blocker"]
+      }
+    }
+  }
+}

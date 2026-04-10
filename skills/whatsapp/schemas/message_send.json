@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WhatsApp Message Send",
+  "description": "Schema for sending WhatsApp messages. Always requires user confirmation.",
+  "type": "object",
+  "required": ["to", "message"],
+  "properties": {
+    "to": {
+      "type": "string",
+      "description": "Chat name, group name, or phone number"
+    },
+    "message": {
+      "type": "string",
+      "description": "Message content"
+    },
+    "reply_to": {
+      "type": "string",
+      "description": "Message ID to reply to (for threaded replies)"
+    },
+    "project": { "type": "string" },
+    "requires_confirmation": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}
